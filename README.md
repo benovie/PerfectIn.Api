@@ -1,56 +1,49 @@
-PerfectIn.Webservice
+PerfectIn.Api
 ==============
- is a TYPO3.Flow package to create webservices for existing code
-
-Create webservice configuration where you define the methods that needs to be delivered as webservices
-
-- Supports REST and SOAP
+ is a TYPO3.Flow package to create api's for existing code
 
 
-
-## Example webservice configurations
+## Example routing
 
 ### Find all TYPO3\Flow\Security\Role with REST
 
-webservices.yaml:
+Routes.yaml:
 
 ```
 -
-  name: Roles
-  operations:
-    -
-      name: findAll
-      bindings:
-        - 
-          type: rest
-          options:
-            url: webservice/security/role
-            method: GET
-      implementation:
-        class: TYPO3\Flow\Security\Policy\RoleRepository
-        method: findAll 
+  name: 'Rest route for Roles'
+  uriPattern: role
+  httpMethods:
+    - GET
+  defaults:
+    '@package': PerfectIn.Api
+    '@controller': Rest
+    '@action': handle
+    class: TYPO3\Flow\Security\Policy\PolicyService
+    method: getRoles
  
 ```       
     
 
-### Find one TYPO3\Flow\Security\Roles with REST
+### Find one TYPO3\Flow\Security\Role with REST
 
-> Note that the variable {identifier} in the url is automatically mapped to the $identifier parameter in the `findByIdentifier` method
+> Note that the variable {roleIdentifier} in the url is automatically mapped to the $roleIdentifier parameter in the `getRole` method
 
 
-webservices.yaml:
+Routes.yaml:
 
 ```
-    -
-      name: read
-      bindings:
-        - 
-          type: rest
-          options:
-            url: webservice/security/role/{identifier}
-            method: GET
-      implementation:
-        class: TYPO3\Flow\Security\Policy\RoleRepository
-        method: findByIdentifier 
+-
+  name: 'Rest route for Role'
+  uriPattern: 'role/{roleIdentifier}'
+  httpMethods:
+    - GET
+  defaults:
+    '@package': PerfectIn.Api
+    '@controller': Rest
+    '@action': handle
+    class: TYPO3\Flow\Security\Policy\PolicyService
+    method: getRole
+
 ```
 
