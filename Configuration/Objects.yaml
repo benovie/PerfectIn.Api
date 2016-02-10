@@ -1,0 +1,15 @@
+PerfectIn\Api\Aspect\LoggingAspect:
+  properties:
+    logger:
+      object:
+        factoryObjectName: TYPO3\Flow\Log\LoggerFactory
+        factoryMethodName: create
+        arguments:
+          1:
+            value: 'PerfectIn_Api'
+          2:
+            setting: PerfectIn.Api.log.logger
+          3:
+            setting: PerfectIn.Api.log.backend
+          4:
+            setting: PerfectIn.Api.log.backendOptions

@@ -1,0 +1,14 @@
+{
+    "name": "perfectin/api",
+    "type": "typo3-flow-framework",
+    "description": "TYPO3 Flow package for creating api",
+    "license": "LGPL-3.0+",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "PerfectIn\\Api": "Classes"
+        }
+    }
+}

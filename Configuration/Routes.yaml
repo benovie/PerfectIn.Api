@@ -1,0 +1,22 @@
+-
+  name: 'Rest route for Roles'
+  uriPattern: role
+  httpMethods:
+    - GET
+  defaults:
+    '@package': PerfectIn.Api
+    '@controller': Rest
+    '@action': handle
+    class: TYPO3\Flow\Security\Policy\PolicyService
+    method: getRoles
+-
+  name: 'Rest route for Role'
+  uriPattern: 'role/{roleIdentifier}'
+  httpMethods:
+    - GET
+  defaults:
+    '@package': PerfectIn.Api
+    '@controller': Rest
+    '@action': handle
+    class: TYPO3\Flow\Security\Policy\PolicyService
+    method: getRole
